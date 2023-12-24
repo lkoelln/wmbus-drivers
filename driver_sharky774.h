@@ -65,6 +65,7 @@ private:
       i += 2;
       usage = bcd_2_int(telegram, i, 4);
       ret_val = usage / 1.0;
+      ESP_LOGW(TAG, "Found register '0c06' with '%d'->'%f'", usage, ret_val.value());
     } else {
       ESP_LOGW(TAG, "wrong register %f", c)
     }
