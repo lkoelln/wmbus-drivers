@@ -184,6 +184,7 @@ protected:
     while (i < telegram.size()) {
       uint32_t c = (((uint32_t)telegram[i+0] << 8) | ((uint32_t)telegram[i+1]));
       if (c == total_register) {
+        ESP_LOGW(TAG, "Found register '0C06' at %d", i);
         i += 2;
         usage = bcd_2_int(telegram, i, 4);
         // in kWh
