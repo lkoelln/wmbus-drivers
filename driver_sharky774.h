@@ -51,7 +51,6 @@ private:
     }
     return ret_val;
   };
-};
 
 private:
   esphome::optional<double> get_total_energy_consumption_kwh(std::vector<unsigned char> &telegram) {
