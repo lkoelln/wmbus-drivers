@@ -16,7 +16,7 @@ struct Sharky774 : Driver
   virtual esphome::optional<std::map<std::string, double>> get_values(std::vector<unsigned char> &telegram) override {
     std::map<std::string, double> ret_val{};
 
-    add_to_map(ret_val, "total_energy_consumption_kwh", this->get_0C06(telegram));
+    add_to_map(ret_val, "total_energy_consumption_kwh", this->get_total_energy_consumption_kwh(telegram));
     add_to_map(ret_val, "total_energy_consumption_gj", this->get_total_energy_consumption_gj(telegram));
     add_to_map(ret_val, "power_kw", this->get_0C2B(telegram));
     add_to_map(ret_val, "total_volume_m3", this->get_0C13(telegram));
@@ -57,7 +57,7 @@ private:
     esphome::optional<double> ret_val{};
     uint32_t usage = 0;
     // 0c06 starts alway at index 46
-    size_t i = 46;
+    size_t i = 23;
     uint32_t total_register = 0x0C06;
     uint32_t c = (((uint32_t)telegram[i + 0] << 8) | ((uint32_t)telegram[i + 1]));
     if (c == total_register) {
